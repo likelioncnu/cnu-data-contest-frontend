@@ -1,10 +1,11 @@
+import GlobalThemeProvider from './assets/styles/GlobalThemeProvider'
 
 function App() {
   return (
-    <div>
-      Hello World!
-    </div>
-  );
+    <GlobalThemeProvider>
+      <div>Hello World!</div>
+    </GlobalThemeProvider>
+  )
 }
 
-export default App;
+export default App
