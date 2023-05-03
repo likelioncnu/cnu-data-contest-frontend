@@ -2,7 +2,7 @@ import { ThemeProvider } from 'styled-components'
 import theme from './theme'
 import GlobalStyle from './GlobalStyle'
 
-const GlobalThemeProvider = ({ children }) => {
+function GlobalThemeProvider({ children }) {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />

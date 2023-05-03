@@ -1,9 +1,11 @@
 import Header from '../header'
+import Banner from '../banner'
 
-const BaseLayout = ({ children }) => {
-  return(
+function BaseLayout({ children }) {
+  return (
     <div>
       <Header />
+      <Banner />
       {children}
     </div>
   )

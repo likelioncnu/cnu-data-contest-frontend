@@ -1,8 +1,10 @@
-const Header = () => {
+import { Container, Logo } from './Header.style'
+
+function Header() {
   return (
-    <header>
-      <h1>logo</h1>
-    </header>
+    <Container>
+      <Logo>logo</Logo>
+    </Container>
   )
 }
 

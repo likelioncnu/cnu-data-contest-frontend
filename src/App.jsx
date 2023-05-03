@@ -1,7 +1,7 @@
-import GlobalThemeProvider from './assets/styles/GlobalThemeProvider'
+import GlobalThemeProvider from './styles/GlobalThemeProvider'
 import BaseLayout from './components/common/base-layout'
 
-const App = () => {
+function App() {
   return (
     <GlobalThemeProvider>
       <BaseLayout>Hello World!</BaseLayout>
