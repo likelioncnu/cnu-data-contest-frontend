@@ -1,10 +1,7 @@
 import { Container } from './WatchList.style'
+import WatchListItem from './WatchListItem'
 
 // parameter: username, 대학, 학과, 학번, [관심학과]
-
-const WatchListItem = ({ listItem }) => {
-  return <li>[공모전] title</li>
-}
 
 function WatchList({ watchList }) {
   return (
