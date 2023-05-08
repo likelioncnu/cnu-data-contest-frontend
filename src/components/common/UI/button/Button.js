@@ -1,15 +1,15 @@
-import {StyledButton} from './Button.style'
+import { StyledButton } from './Button.style'
 
-function Button ({children, type}) {
+function Button({ children, type, onClick }) {
   return (
-    <StyledButton type={type}>
+    <StyledButton type={type} onClick={onClick}>
       {children}
     </StyledButton>
   )
 }
 
 Button.defaultProps = {
-  color: 'lightGray'
+  color: 'lightGray',
 }
 
 export default Button
