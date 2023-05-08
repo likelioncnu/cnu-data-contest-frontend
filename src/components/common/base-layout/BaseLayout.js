@@ -1,13 +1,13 @@
 import Header from '../header'
 import Banner from '../banner'
-
+import Container from '../container'
 function BaseLayout({ children }) {
   return (
-    <div>
+    <>
       <Header />
       <Banner />
-      {children}
-    </div>
+      <Container>{children}</Container>
+    </>
   )
 }
 
