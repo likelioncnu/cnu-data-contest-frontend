@@ -10,7 +10,7 @@ function SlickList({ subject, data }) {
           <div>left arrow</div>
           <ul>
             {/* data.map((item) => {
-              <SlickListItem />
+              <SlickListItem data={data} />
             }) */}
           </ul>
           <div>right arrow</div>
