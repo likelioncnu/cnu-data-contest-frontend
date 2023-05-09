@@ -4,7 +4,7 @@ const palette = {
   orange: '#FFA800',
   lightGray: '#D8D8D8',
   darkGray: '#7C7C7C',
-  lilac: '#EDF5FE'
+  lilac: '#EDF5FE',
 }
 
 const theme = {
