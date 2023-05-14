@@ -1,12 +1,19 @@
 import Button from '../common/UI/button'
-import { Container } from './UserInfo.style'
+import {
+  Container,
+  UserInfoTitle,
+  UserNumber,
+  UserInfoFavorite,
+  FavoriteList,
+  ListItem,
+} from './UserInfo.style'
 
 // parameter: username, 대학, 학과, 학번, [관심학과]
 // 로그아웃 이벤트 함수 구현
 // 관심학과 수정 이벤트 구현(component)
 
 export const FavoriteListItem = ({ listItem }) => {
-  return <li>인문대학 국어국문학과</li>
+  return <ListItem>인문대학 국어국문학과</ListItem>
 }
 
 const onLogout = () => {}
@@ -21,19 +28,22 @@ function UserInfo({
   return (
     <Container>
       <div>
-        <div>
+        <UserInfoTitle>
           <h2>홍길동 님</h2>
           <Button onClick={onLogout}>로그아웃</Button>
-        </div>
+        </UserInfoTitle>
         <strong>인문대학 국어국문학과</strong>
-        <span>201912345</span>
+        <UserNumber>201912345</UserNumber>
       </div>
+      <hr />
       <div>
-        <div>
+        <UserInfoFavorite>
           <h2>관심학과</h2>
           <span>수정하기</span>
-        </div>
-        <ul>{/* FavoriteListItem */}</ul>
+        </UserInfoFavorite>
+        <FavoriteList>
+          <FavoriteListItem />
+        </FavoriteList>
       </div>
     </Container>
   )
