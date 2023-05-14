@@ -12,7 +12,7 @@ import SearchData from '../components/search-data'
 
 function Main() {
   return (
-    <BaseLayout>
+    <BaseLayout type="main">
       <UserInfo />
       <WatchList />
       <SlickList />

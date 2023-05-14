@@ -1,9 +1,26 @@
-import { Container } from './Banner.style'
+import { Container, Image, Content } from './Banner.style'
+import banner from '../../../assets/images/banner.png'
 
-function Banner({color}) {
+const MainBanner = () => {
   return (
-    <Container color={color}>
-      <strong>Banner</strong>
+    <>
+      <span>모든 교내 대외활동을 한 자리에 모아봤어요.</span>
+      <strong>
+        오직, 충남대 학생들을 위한
+        <br />
+        교내 대외활동 아카이빙 플랫폼
+      </strong>
+    </>
+  )
+}
+
+function Banner({ type }) {
+  return (
+    <Container>
+      <Content>
+        {type === 'main' && <MainBanner />}
+      </Content>
+      <Image src={banner} />
     </Container>
   )
 }
