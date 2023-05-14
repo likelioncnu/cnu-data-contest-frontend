@@ -3,7 +3,7 @@ import { Container, Logo } from './Header.style'
 function Header() {
   return (
     <Container>
-      <Logo>logo</Logo>
+      <Logo>CNU SPEC++</Logo>
     </Container>
   )
 }
