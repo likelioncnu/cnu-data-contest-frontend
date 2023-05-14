@@ -7,7 +7,9 @@ function WatchList({ watchList }) {
   return (
     <Container>
       <h2>관심 대외활동</h2>
-      <ul>{/* WatchListItem */}</ul>
+      <ul>
+        <WatchListItem />
+      </ul>
     </Container>
   )
 }
