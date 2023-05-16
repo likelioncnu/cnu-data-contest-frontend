@@ -7,6 +7,8 @@ function WatchList({ watchList }) {
   return (
     <Container>
       <h2>관심 대외활동</h2>
+      <img src="https://cnu.ac.kr/_attach/image/editor_image/2023/04/oLFTzNhimHAnpVtrzMiH0.png" />
+      
       <ul>
         <WatchListItem />
       </ul>

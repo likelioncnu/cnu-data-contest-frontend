@@ -1,12 +1,12 @@
 import Header from '../header'
 import Banner from '../banner'
-import Container from '../container'
-function BaseLayout({ banner, children }) {
+
+function BaseLayout({ type, children }) {
   return (
     <>
       <Header />
       <Banner type="main" />
-      <Container>{children}</Container>
+      {children}
     </>
   )
 }

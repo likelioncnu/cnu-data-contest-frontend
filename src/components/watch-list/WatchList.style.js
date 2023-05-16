@@ -2,8 +2,8 @@ import styled from 'styled-components'
 
 export const Container = styled.section`
   position: absolute;
-  top: 444px;
-  right: 350px;
+  top: -120px;
+  right: 0px;
   padding: 24px;
   width: 280px;
   height: 430px;
@@ -27,7 +27,6 @@ export const ListItem = styled.li`
   span {
     cursor: pointer;
   }
-  
 
   img {
     width: 12px;

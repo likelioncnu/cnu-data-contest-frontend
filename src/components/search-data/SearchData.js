@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { university } from '../../data'
-import { Container } from './SearchData.style'
+import { Container, InnerContainer } from './SearchData.style'
 import DropDown from '../common/UI/drop-down'
 import Button from '../common/UI/button'
 
@@ -38,26 +38,34 @@ function SearchData() {
 
   return (
     <Container>
-      <Button onClick={handleUniversityDropdownVisibility}>대학</Button>
-      <DropDown visibility={universityDropdownVisibility}>
-        <ul>
-          {university.map(item => (
-            <li key={item.name} onClick={handleUniveritySelectedDropdownList}>
-              {item.name}
-            </li>
-          ))}
-        </ul>
-      </DropDown>
-      <Button onClick={handleMajorDropdownVisibility}>학과</Button>
-      <DropDown visibility={majorDropdownVisibility}>
-        <ul>
-          {selectedUniversity.map(item => (
-            <li key={item} onClick={handleMajorSelectedDropdownList}>
-              {item}
-            </li>
-          ))}
-        </ul>
-      </DropDown>
+      <InnerContainer>
+        <div>
+          <Button onClick={handleUniversityDropdownVisibility}>대학</Button>
+          <DropDown visibility={universityDropdownVisibility}>
+            <ul>
+              {university.map(item => (
+                <li
+                  key={item.name}
+                  onClick={handleUniveritySelectedDropdownList}
+                >
+                  {item.name}
+                </li>
+              ))}
+            </ul>
+          </DropDown>
+          <Button onClick={handleMajorDropdownVisibility}>학과</Button>
+          <DropDown visibility={majorDropdownVisibility}>
+            <ul>
+              {selectedUniversity.map(item => (
+                <li key={item} onClick={handleMajorSelectedDropdownList}>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </DropDown>
+        </div>
+        <Button>검색</Button>
+      </InnerContainer>
     </Container>
   )
 }
