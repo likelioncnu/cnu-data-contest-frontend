@@ -1,7 +1,7 @@
 import { Container, Image, Content } from './Banner.style'
 import banner from '../../../assets/images/banner.png'
 
-const MainBanner = () => {
+const BannerContent = () => {
   return (
     <>
       <span>모든 교내 대외활동을 한 자리에 모아봤어요.</span>
@@ -16,9 +16,9 @@ const MainBanner = () => {
 
 function Banner({ type }) {
   return (
-    <Container>
-      <Content>
-        {type === 'main' && <MainBanner />}
+    <Container type={type}>
+      <Content type={type}>
+        <BannerContent />
       </Content>
       <Image src={banner} />
     </Container>

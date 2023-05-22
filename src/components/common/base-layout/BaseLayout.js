@@ -5,7 +5,7 @@ function BaseLayout({ type, children }) {
   return (
     <>
       <Header />
-      <Banner type="main" />
+      <Banner type={type} />
       {children}
     </>
   )
