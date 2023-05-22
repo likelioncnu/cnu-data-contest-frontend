@@ -15,7 +15,7 @@ function SlickListItem({ data }) {
   return (
     <Container>
       <ImageContainer>
-        {data.images && data.baseURl !== null ? (
+        {data.images && data.baseURl !== "" ? (
           <img
             src={`${data.baseUrl}${data.image}`}
             alt={data.title}

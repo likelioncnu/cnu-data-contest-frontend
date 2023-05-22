@@ -1,8 +1,24 @@
-function DropDown({children, visibility}) {
+import React, { useState, useEffect } from 'react'
+import { Article } from './DropDown.style'
+
+function DropDown({ children, visibility }) {
+  const [visibilityAnimation, setVisibilityAnimation] = useState(false)
+  useEffect(() => {
+    visibility
+      ? setVisibilityAnimation(true)
+      : setTimeout(() => {
+          setVisibilityAnimation(false)
+        }, 400)
+  }, [visibility])
+
   return (
-    <article>
-      {visibility && children}  
-    </article>
+    <Article
+      className={
+        visibility ? 'slide-fade-in-dropdown' : 'slide-fade-out-dropdown'
+      }
+    >
+      {children}
+    </Article>
   )
 }
 
