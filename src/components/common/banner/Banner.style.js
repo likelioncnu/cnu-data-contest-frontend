@@ -5,7 +5,7 @@ const containerType = {
     height: 392px;
   `,
   login: css`
-    height: 100vh;
+    height: 883px;
   `
 }
 
@@ -18,7 +18,7 @@ export const Container = styled.div`
 
 export const Image = styled.img`
   width: 100%;
-  height: auto;
+  height: 100%;
 `
 
 const contentType = {
