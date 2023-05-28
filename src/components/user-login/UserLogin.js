@@ -35,19 +35,25 @@ function UserLogin() {
       url: API.LOGIN,
       data: input,
     }
-    getAsync(config).then(res => {
-      const { member } = res.data
-      const memberValue = {
-        none: () => {
-          setCookies('userId', input.userId)
-          navigate('/first-login')
-        },
-        false: () => {
-          // 패스워드가 틀렸다는 팝업을 뜨게 한다.
-        }
-      }
-      memberValue[member]()
-    })
+    // getAsync(config).then(res => {
+    //   const { member } = res.data
+    //   const memberValue = {
+    //     none: () => {
+    //       setCookies('userId', input.userId)
+    //       navigate('/first-login')
+    //     },
+    //     false: () => {
+    //       // 패스워드가 틀렸다는 팝업을 뜨게 한다.
+    //     },
+    //     true: () => {
+    //       setCookies('userId', input.userId)
+    //       navigate('/')
+    //     }
+    //   }
+    //   memberValue[member]()
+    // })
+    setCookies('userId', input.userId)
+    navigate('/')
   }
 
   return (

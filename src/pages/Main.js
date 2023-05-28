@@ -12,8 +12,6 @@ import { useNavigate } from 'react-router-dom'
 // 응답 받은 데이터 props 전달
 
 function Main() {
-  const navigate = useNavigate()
-
   return (
     <BaseLayout type="main">
       <SearchData />

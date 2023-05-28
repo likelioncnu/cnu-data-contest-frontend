@@ -1,4 +1,6 @@
 import Button from '../common/UI/button'
+import { useCookies } from 'react-cookie'
+import { useNavigate } from 'react-router-dom'
 import {
   Container,
   UserInfoTitle,
@@ -16,8 +18,6 @@ export const FavoriteListItem = ({ listItem }) => {
   return <ListItem>인문대학 국어국문학과</ListItem>
 }
 
-const onLogout = () => {}
-
 function UserInfo({
   username,
   university,
@@ -25,6 +25,14 @@ function UserInfo({
   studentNumber,
   favorite,
 }) {
+  const navigate = useNavigate()
+  const [cookies, setCookies, removeCookie] = useCookies(['userId'])
+
+  const onLogout = () => {
+    removeCookie('userId')
+    navigate('/login')
+  }
+
   return (
     <Container>
       <div>
