@@ -40,7 +40,7 @@ function SlickList({ section, data }) {
         <a href="#">더 알아보기&gt;</a>
       </Section>
       <StyledSlider {...settings}>
-        {data.map((item, idx) => <SlickListItem key={idx} data={item}></SlickListItem>)}
+        {data.map((item, idx) => <SlickListItem key={idx} info={item} section={section}></SlickListItem>)}
       </StyledSlider>
     </Container>
   )

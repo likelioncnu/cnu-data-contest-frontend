@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import Button from '../common/UI/button'
 import Input from '../common/UI/input'
 import {
@@ -7,16 +8,46 @@ import {
   CheckBoxContainer,
   InputContainer,
 } from './UserLogin.style'
+import { useCookies } from 'react-cookie'
+import getAsync from '../../api'
+import API from '../../config'
 
 function UserLogin() {
+  const navigate = useNavigate()
   const [input, setInput] = useState({
     userId: '',
     userPw: '',
   })
+  const [cookies, setCookies, removeCookies] = useCookies(['userId'])
+  const { userId, userPw } = input
 
-  const onLogin = e => {
-    const value = e.target.value
-    setInput({ ...input, userId: value })
+  const onChange = e => {
+    const { name, value } = e.target
+    setInput({
+      ...input,
+      [name]: value,
+    })
+  }
+
+  const onLogin = () => {
+    const config = {
+      method: 'POST',
+      url: API.LOGIN,
+      data: input,
+    }
+    getAsync(config).then(res => {
+      const { member } = res.data
+      const memberValue = {
+        none: () => {
+          setCookies('userId', input.userId)
+          navigate('/first-login')
+        },
+        false: () => {
+          // 패스워드가 틀렸다는 팝업을 뜨게 한다.
+        }
+      }
+      memberValue[member]()
+    })
   }
 
   return (
@@ -26,8 +57,8 @@ function UserLogin() {
         <Input
           type="text"
           name="userId"
-          onChange={onLogin}
-          value={input.userId}
+          onChange={onChange}
+          value={userId}
           id="userId"
           placeholder="충남대학교 포탈 ID"
           content="포탈 ID"
@@ -35,7 +66,8 @@ function UserLogin() {
         <Input
           type="password"
           name="userPw"
-          value={input.userPw}
+          onChange={onChange}
+          value={userPw}
           id="userPw"
           placeholder="충남대학교 포탈 PW"
           content="패스워드"
@@ -49,7 +81,9 @@ function UserLogin() {
           <Input type="checkbox" id="maintenance" content="로그인 유지" />
         </div>
       </CheckBoxContainer>
-      <Button type="approve" size="big">로그인</Button>
+      <Button type="approve" size="big" onClick={onLogin}>
+        로그인
+      </Button>
     </Container>
   )
 }

@@ -1,6 +1,6 @@
 import { Container, Label, InputElement } from './Input.style'
 
-function Input({ type, placeholder, name, value, id, content }) {
+function Input({ type, placeholder, name, value, id, content, onChange}) {
   return (
     <Container type={type}>
       <Label htmlFor={id}>
@@ -9,6 +9,7 @@ function Input({ type, placeholder, name, value, id, content }) {
       <InputElement
         type={type}
         placeholder={placeholder}
+        onChange={onChange}
         name={name}
         value={value}
         id={id}
