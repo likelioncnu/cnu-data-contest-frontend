@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import BaseLayout from '../components/common/base-layout'
 import Container from '../components/common/container'
-import getAsync from '../api'
-import API from '../config'
 import Posts from '../components/posts/Posts'
-import Pagination from '../assets/images/pagination/Pagination'
+import Pagination from '../components/pagination'
 
 function BoardList({
   section,

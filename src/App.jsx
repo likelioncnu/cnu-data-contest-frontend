@@ -20,11 +20,12 @@ function App() {
 
   const [posts, setPosts] = useState([])
   const [loading, setLoading] = useState(false)
-  const [currentPage, setCurrentPate] = useState(1)
-  const [postsPerPage, setPostsPerPage] = useState(5)
+  const [currentPage, setCurrentPage] = useState(1)
+  const [postsPerPage, setPostsPerPage] = useState(10)
 
   const indexOfLast = currentPage * postsPerPage
   const indexOfFirst = indexOfLast - postsPerPage
+
   const currentPosts = posts => {
     let currentPosts = 0
     currentPosts = posts.slice(indexOfFirst, indexOfLast)
@@ -55,7 +56,14 @@ function App() {
         <Route
           path="board-list"
           element={
-            <BoardList section={section} posts={posts} loading={loading} postsPerPage={postsPerPage} totalPosts={posts.length} paginate={setCurrentPate} />
+            <BoardList
+              section={section}
+              posts={currentPosts(posts)}
+              loading={loading}
+              postsPerPage={postsPerPage}
+              totalPosts={posts.length}
+              paginate={setCurrentPage}
+            />
           }
         ></Route>
       </Routes>
