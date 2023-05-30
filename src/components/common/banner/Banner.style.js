@@ -6,6 +6,12 @@ const containerType = {
   `,
   login: css`
     height: 883px;
+  `,
+  board: css`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 331px;
   `
 }
 
@@ -34,6 +40,10 @@ const contentType = {
     left: 940px;
   `,
 }
+
+export const BoardContent = styled.h1`
+  font-size: 40px;
+`
 
 export const Content = styled.div`
   position: absolute;

@@ -25,6 +25,7 @@ export const Section = styled.div`
     letter-spacing: 0.5px;
     color: #5b5b5b;
     font-size: 12px;
+    cursor: pointer;
   }
 `
 

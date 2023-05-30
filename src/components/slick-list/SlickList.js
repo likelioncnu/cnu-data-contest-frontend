@@ -10,8 +10,11 @@ import 'slick-carousel/slick/slick-theme.css'
 import SlickListItem from './SlickListItem'
 import { ReactComponent as Prev } from '../../assets/images/left-arrow.svg'
 import { ReactComponent as Next } from '../../assets/images/right-arrow.svg'
+import { useNavigate } from 'react-router-dom'
 
-function SlickList({ section, data }) {
+function SlickList({ section, data, fetchMore}) {
+  const navigate = useNavigate()
+
   const settings = {
     infinite: false,
     speed: 500,
@@ -31,16 +34,26 @@ function SlickList({ section, data }) {
     ),
   }
 
+  const onClick = () => {
+    fetchMore(section)
+  }
+
   return (
     <Container>
       <Section>
         {section === 'intern' && <h1>취업/인턴</h1>}
         {section === 'contest' && <h1>콘테스트</h1>}
         {section === 'seminar' && <h1>역량개발</h1>}
-        <a href="#">더 알아보기&gt;</a>
+        <a onClick={onClick}>더 알아보기&gt;</a>
       </Section>
       <StyledSlider {...settings}>
-        {data.map((item, idx) => <SlickListItem key={idx} info={item} section={section}></SlickListItem>)}
+        {data.map((item, idx) => (
+          <SlickListItem
+            key={idx}
+            info={item}
+            section={section}
+          ></SlickListItem>
+        ))}
       </StyledSlider>
     </Container>
   )

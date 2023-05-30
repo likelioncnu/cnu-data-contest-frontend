@@ -11,7 +11,7 @@ import { useNavigate } from 'react-router-dom'
 // 쿠키 확인(로그인 유무)
 // 응답 받은 데이터 props 전달
 
-function Main() {
+function Main({ fetchMore }) {
   return (
     <BaseLayout type="main">
       <SearchData />
@@ -19,7 +19,7 @@ function Main() {
         <UserInfo />
         <WatchList />
         {section.map((name, idx) => (
-          <SlickList key={idx} section={name} data={slickListData[name]} />
+          <SlickList key={idx} section={name} data={slickListData[name]} fetchMore={fetchMore} />
         ))}
       </Container>
     </BaseLayout>

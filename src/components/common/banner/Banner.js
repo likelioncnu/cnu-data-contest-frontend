@@ -1,8 +1,14 @@
-import { Container, Image, Content } from './Banner.style'
+import { Container, Image, Content, BoardContent } from './Banner.style'
 import banner from '../../../assets/images/banner.png'
 
-const BannerContent = () => {
-  return (
+const BannerContent = ({ type, section }) => {
+  return type == 'board' ? (
+    <>
+      {section === 'intern' && <BoardContent>취업/인턴</BoardContent>}
+      {section === 'contest' && <BoardContent>콘테스트</BoardContent>}
+      {section === 'seminar' && <BoardContent>역량개발</BoardContent>}
+    </>
+  ) : (
     <>
       <span>모든 교내 대외활동을 한 자리에 모아봤어요.</span>
       <strong>
@@ -14,11 +20,11 @@ const BannerContent = () => {
   )
 }
 
-function Banner({ type }) {
+function Banner({ type, section }) {
   return (
     <Container type={type}>
       <Content type={type}>
-        <BannerContent />
+        <BannerContent type={type} section={section} />
       </Content>
       <Image src={banner} />
     </Container>

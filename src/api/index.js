@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-export default async function getAsync(url, config) {
+export default async function getAsync(config) {
   try {
     const res = await axios(config)
     return res.data

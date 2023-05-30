@@ -18,6 +18,7 @@ function UserLogin() {
     userId: '',
     userPw: '',
   })
+  const [failedLogin, setFailedLogin] = useState(false)
   const [cookies, setCookies, removeCookies] = useCookies(['userId'])
   const { userId, userPw } = input
 
@@ -43,7 +44,8 @@ function UserLogin() {
     //       navigate('/first-login')
     //     },
     //     false: () => {
-    //       // 패스워드가 틀렸다는 팝업을 뜨게 한다.
+    // 패스워드가 틀렸다는 팝업을 뜨게 한다. => serFailedLogin
+    // setFailedLogin(!failedLogin)
     //     },
     //     true: () => {
     //       setCookies('userId', input.userId)
@@ -90,6 +92,14 @@ function UserLogin() {
       <Button type="approve" size="big" onClick={onLogin}>
         로그인
       </Button>
+      <div>
+        <strong>
+          사용자 정보가 일치하지 않습니다.
+          <br />
+          다시 입력해주세요.
+        </strong>
+        <Button type="approve">확인</Button>
+      </div>
     </Container>
   )
 }
