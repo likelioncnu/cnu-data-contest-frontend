@@ -8,6 +8,7 @@ import {
   CheckBoxContainer,
   InputContainer,
 } from './UserLogin.style'
+import ErrorMessagePopup from './ErrorMessagePopUp'
 import { useCookies } from 'react-cookie'
 import getAsync from '../../api'
 import API from '../../config'
@@ -54,8 +55,13 @@ function UserLogin() {
     //   }
     //   memberValue[member]()
     // })
-    setCookies('userId', input.userId)
-    navigate('/')
+    if (userId === '' || userPw === '') {
+      console.log('hello')
+      setFailedLogin(true)
+    } else {
+      setCookies('userId', input.userId)
+      navigate('/')
+    }
   }
 
   return (
@@ -92,14 +98,7 @@ function UserLogin() {
       <Button type="approve" size="big" onClick={onLogin}>
         로그인
       </Button>
-      <div>
-        <strong>
-          사용자 정보가 일치하지 않습니다.
-          <br />
-          다시 입력해주세요.
-        </strong>
-        <Button type="approve">확인</Button>
-      </div>
+      {failedLogin && <ErrorMessagePopup setFailedLogin={setFailedLogin} />}
     </Container>
   )
 }
