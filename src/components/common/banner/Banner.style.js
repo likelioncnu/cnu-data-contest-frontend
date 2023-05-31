@@ -5,18 +5,18 @@ const containerType = {
     height: 392px;
   `,
   login: css`
-    height: 883px;
+    height: 100vh;
   `,
   board: css`
     display: flex;
     justify-content: center;
     align-items: center;
     height: 331px;
-  `
+  `,
 }
 
 export const Container = styled.div`
-  ${({type}) => containerType[type]}
+  ${({ type }) => containerType[type]}
 
   position: relative;
   background-color: #2560ab;
@@ -36,7 +36,7 @@ const contentType = {
     strong {
       font-size: 40px;
     }
-    top: 194px;
+    top: 270px;
     left: 940px;
   `,
 }
@@ -58,7 +58,11 @@ export const Content = styled.div`
 
   strong {
     font-size: 33px;
-    line-height: 39px;
+    line-height: 48px;
+  }
+
+  img {
+    margin-bottom: 36px;
   }
 
   ${({ type }) => contentType[type]}

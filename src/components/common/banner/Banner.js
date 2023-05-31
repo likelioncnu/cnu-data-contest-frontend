@@ -1,5 +1,6 @@
 import { Container, Image, Content, BoardContent } from './Banner.style'
 import banner from '../../../assets/images/banner.png'
+import infographic from '../../../assets/images/infographic.svg'
 
 const BannerContent = ({ type, section }) => {
   return type == 'board' ? (
@@ -10,6 +11,7 @@ const BannerContent = ({ type, section }) => {
     </>
   ) : (
     <>
+      {type === 'login' && <img src={infographic} alt="infographic" />}
       <span>모든 교내 대외활동을 한 자리에 모아봤어요.</span>
       <strong>
         오직, 충남대 학생들을 위한

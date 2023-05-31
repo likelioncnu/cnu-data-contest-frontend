@@ -1,9 +1,10 @@
 import { Container, Logo } from './Header.style'
+import logo from '../../../assets/images/logo.svg'
 
 function Header() {
   return (
     <Container>
-      <Logo>CNU SPEC++</Logo>
+      <img src={logo} alt="" />
     </Container>
   )
 }

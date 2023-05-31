@@ -2,7 +2,8 @@ import styled from 'styled-components'
 
 export const Container = styled.header`
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
+  padding-left: 350px;
   align-items: center;
   height: 105px;
 `
