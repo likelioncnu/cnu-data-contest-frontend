@@ -31,36 +31,29 @@ function UserLogin() {
     })
   }
 
-  const onLogin = () => {
+  const onLogin = async () => {
     const config = {
       method: 'POST',
-      url: API.LOGIN,
       data: input,
     }
-    // getAsync(config).then(res => {
-    //   const { member } = res.data
-    //   const memberValue = {
-    //     none: () => {
-    //       setCookies('userId', input.userId)
-    //       navigate('/first-login')
-    //     },
-    //     false: () => {
-    // 패스워드가 틀렸다는 팝업을 뜨게 한다. => serFailedLogin
-    // setFailedLogin(!failedLogin)
-    //     },
-    //     true: () => {
-    //       setCookies('userId', input.userId)
-    //       navigate('/')
-    //     }
-    //   }
-    //   memberValue[member]()
-    // })
     if (userId === '' || userPw === '') {
-      console.log('hello')
       setFailedLogin(true)
     } else {
-      setCookies('userId', input.userId)
-      navigate('/')
+      const { isMember } = await getAsync(API.LOGIN, config)
+      const memberValue = {
+        none: () => {
+          setCookies('userId', input.userId)
+          navigate('/first-login')
+        },
+        false: () => {
+          setFailedLogin(!failedLogin)
+        },
+        true: () => {
+          setCookies('userId', input.userId)
+          navigate('/')
+        },
+      }
+        memberValue[isMember]()
     }
   }
 

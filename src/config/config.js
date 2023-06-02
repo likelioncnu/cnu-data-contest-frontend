@@ -1,5 +1,3 @@
-const BASE_URL = ''
-
 const API = {
   LOGIN: `/login`,
   MAJOR: `/major`,
