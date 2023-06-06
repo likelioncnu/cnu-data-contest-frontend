@@ -1,6 +1,11 @@
 import styled, { css } from 'styled-components'
 
 export const Article = styled.article`
+  ${({ type }) => type === 'favorite' && css`
+    position: absolute;
+    top: 160px;
+
+  `}
   & > ul {
     border-radius: 4px;
     background-color: #fff;
@@ -33,8 +38,9 @@ export const Article = styled.article`
       transform: translateY(0);
     }
   }
-  
+
   &.slide-fade-in-dropdown {
+    display: block;
     overflow: hidden;
   }
 
@@ -53,6 +59,7 @@ export const Article = styled.article`
   }
 
   &.slide-fade-out-dropdown {
+    display: none;
     overflow: hidden;
   }
 

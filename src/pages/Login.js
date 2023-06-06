@@ -1,10 +1,10 @@
 import BaseLayout from '../components/common/base-layout'
 import UserLogin from '../components/user-login'
 
-function Login() {
+function Login({ userInfoHandler }) {
   return (
     <BaseLayout type="login">
-      <UserLogin />
+      <UserLogin userInfoHandler={userInfoHandler} />
     </BaseLayout>
   )
 }

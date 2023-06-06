@@ -12,6 +12,7 @@ const palette = {
 const size = {
   small: '73px',
   big: '272px',
+  mid: '168px',
 }
 
 const theme = {

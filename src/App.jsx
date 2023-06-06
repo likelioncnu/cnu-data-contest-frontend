@@ -13,6 +13,11 @@ function App() {
   const navigate = useNavigate()
 
   const [section, setSection] = useState('')
+  const [userInfo, setUserInfo] = useState({
+    name: '',
+    major: '',
+  })
+  const [favoriteMajor, setFavoriteMajor] = useState('')
 
   useEffect(() => {
     cookies.userId === undefined && navigate('/login')
@@ -46,12 +51,32 @@ function App() {
     navigate('/board-list')
   }
 
+  /**
+   * 로그인에 성공했을 시 사용자의 이름, 학과를 받아온다.
+   */
+  const userInfoHandler = (name, major) => {
+    setUserInfo({ ...userInfo, name, major })
+  }
+
+  const fetchFavoriteMajor = () => {
+
+  }
+  
   return (
     <GlobalThemeProvider>
       <Routes>
-        <Route path="/" element={<Main fetchMore={fetchMore} />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/first-login" element={<FirstLogin />}></Route>
+        <Route
+          path="/"
+          element={<Main fetchMore={fetchMore} userInfo={userInfo} />}
+        />
+        <Route
+          path="/login"
+          element={<Login userInfoHandler={userInfoHandler} />}
+        />
+        <Route
+          path="/first-login"
+          element={<FirstLogin fetchFavoriteMajor={fetchFavoriteMajor} />}
+        ></Route>
         {/* 더 알아보기 눌렀을 때 section(state)이 다르게 전달되어야 한다. */}
         <Route
           path="board-list"

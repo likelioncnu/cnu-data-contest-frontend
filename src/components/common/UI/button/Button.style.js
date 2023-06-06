@@ -28,6 +28,10 @@ const styleSize = css`
       return css`
         width: ${theme.size.big};
       `
+    } else if (size === 'mid') {
+      return css`
+        width: ${theme.size.mid};
+      `
     } else {
       return css`
         width: ${theme.size.small};

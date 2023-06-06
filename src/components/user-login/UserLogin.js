@@ -13,7 +13,7 @@ import { useCookies } from 'react-cookie'
 import getAsync from '../../api'
 import API from '../../config'
 
-function UserLogin() {
+function UserLogin({ userInfoHandler }) {
   const navigate = useNavigate()
   const [input, setInput] = useState({
     userId: '',
@@ -39,7 +39,7 @@ function UserLogin() {
     if (userId === '' || userPw === '') {
       setFailedLogin(true)
     } else {
-      const { isMember } = await getAsync(API.LOGIN, config)
+      const { isMember, major, name } = await getAsync(API.LOGIN, config)
       const memberValue = {
         none: () => {
           setCookies('userId', input.userId)
@@ -50,10 +50,11 @@ function UserLogin() {
         },
         true: () => {
           setCookies('userId', input.userId)
+          userInfoHandler(name, major)
           navigate('/')
         },
       }
-        memberValue[isMember]()
+      memberValue[isMember]()
     }
   }
 

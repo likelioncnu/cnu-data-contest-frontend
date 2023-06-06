@@ -11,9 +11,7 @@ function FirstUserLogin() {
   return (
     <Container>
       <Heading>
-        반갑습니다.
-        <br />
-        홍길동님
+        반갑습니다 !
       </Heading>
       <Strong>아직 관심 학과를 선택하지 않으셨나요?</Strong>
       <Description>

@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const Container = styled.div`
   position: absolute;
   top: 235px;
-  left: 100px;
+  left: 875px;
   width: 684px;
   height: 657px;
   background-color: #fff;
@@ -51,10 +51,51 @@ export const Input = styled.input`
 `
 
 export const Hr = styled.hr`
-  border: 1px solid #D9D9D9;
+  border: 1px solid #d9d9d9;
 `
 
-export const MajorContainer = styled.div`
-  height: 223px;
+export const MajorContainer = styled.ul`
+  display: flex;
+  flex-wrap: wrap; 
+  padding: 24px 24px 4px 24px;
+  max-height: 340px;
+  overflow-y: scroll;
 `
 
+export const ListContainer = styled.li`
+  display: flex;
+  width: 50%;
+  align-items: center;
+  margin-bottom: 20px;
+`
+
+export const Label = styled.label`
+  box-sizing: border-box;
+  display: inline-block;
+  margin-right: 20px;
+  width: 15px;
+  height: 15px;
+  border: 1px solid #d9d9d9;
+  cursor: pointer;
+`
+
+export const Radio = styled.input`
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+
+  &:checked + label {
+    border: 4px solid #2560ab;
+  }
+`
+
+export const Major = styled.span`
+  font-size: 14px;
+  cursor: pointer;
+`

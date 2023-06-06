@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Article } from './DropDown.style'
 
-function DropDown({ children, visibility }) {
+function DropDown({ children, visibility, type }) {
   const [visibilityAnimation, setVisibilityAnimation] = useState(false)
   useEffect(() => {
     visibility
@@ -16,6 +16,7 @@ function DropDown({ children, visibility }) {
       className={
         visibility ? 'slide-fade-in-dropdown' : 'slide-fade-out-dropdown'
       }
+      type={type}
     >
       {children}
     </Article>

@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from 'react'
 import Button from '../common/UI/button'
 import { useCookies } from 'react-cookie'
 import { useNavigate } from 'react-router-dom'
@@ -9,25 +10,37 @@ import {
   FavoriteList,
   ListItem,
 } from './UserInfo.style'
+import API from '../../config'
+import getAsync from '../../api'
 
-// parameter: username, 대학, 학과, 학번, [관심학과]
-// 로그아웃 이벤트 함수 구현
-// 관심학과 수정 이벤트 구현(component)
-
-export const FavoriteListItem = ({ listItem }) => {
-  return <ListItem>인문대학 국어국문학과</ListItem>
-}
-
-function UserInfo({
-  username,
-  university,
-  department,
-  studentNumber,
-  favorite,
-}) {
+function UserInfo({ userInfo }) {
   const navigate = useNavigate()
   const [cookies, setCookies, removeCookie] = useCookies(['userId'])
+  const [favoriteMajor, setFavoriteMajor] = useState('')
 
+  /**
+   * 사용자의 관심학과 요청
+   * method 수정해야함.
+   */
+  useEffect(() => {
+    const getFavoriteMajor = async () => {
+      const url = API.FAVORITE_MAJOR
+      const config = {
+        method: 'GET',
+        data: cookies['userId'],
+      }
+      const { favoriteMajor } = await getAsync(url, config)
+      setFavoriteMajor(favoriteMajor)
+    }
+    getFavoriteMajor()
+  }, [])
+
+  /**
+   * 사용자의 관심학과 수정
+   */
+  const onClick = () => {}
+
+  const { name, major } = userInfo
   const onLogout = () => {
     removeCookie('userId')
     navigate('/login')
@@ -37,20 +50,20 @@ function UserInfo({
     <Container>
       <div>
         <UserInfoTitle>
-          <h2>홍길동 님</h2>
+          <h2>{name} 님</h2>
           <Button onClick={onLogout}>로그아웃</Button>
         </UserInfoTitle>
-        <strong>인문대학 국어국문학과</strong>
-        <UserNumber>201912345</UserNumber>
+        <strong>{major}</strong>
+        <UserNumber>{cookies['userId']}</UserNumber>
       </div>
       <hr />
       <div>
         <UserInfoFavorite>
           <h2>관심학과</h2>
-          <span>수정하기</span>
+          <span onClick={onClick}>수정하기</span>
         </UserInfoFavorite>
         <FavoriteList>
-          <FavoriteListItem />
+          <ListItem>{favoriteMajor}</ListItem>
         </FavoriteList>
       </div>
     </Container>
