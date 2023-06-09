@@ -14,7 +14,7 @@ import DropDown from '../common/UI/drop-down'
 import Button from '../common/UI/button'
 import dropdown from '../../assets/images/dropdown.svg'
 
-function SearchData({ handleSelectedMajor }) {
+function SearchData({ handleSelectedMajor, handleShowFavoriteMajorData }) {
   const [universityDropdownVisibility, setUniversityDropdownVisibility] =
     useState(false)
   const [majorDropdownVisibility, setMajorDropdownVisibility] = useState(false)
@@ -53,13 +53,13 @@ function SearchData({ handleSelectedMajor }) {
   }
 
   const handleShowFavorite = () => {
-    console.log('show favorite')
+    handleShowFavoriteMajorData('공과대학', '컴퓨터융합학부')
   }
 
   return (
     <Container>
       <Star onClick={handleShowFavorite}>
-        <img src={star} alt="start" />
+        <img src={star} alt="star" />
       </Star>
 
       <InnerContainer>

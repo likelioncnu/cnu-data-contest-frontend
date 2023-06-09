@@ -11,15 +11,10 @@ import 'slick-carousel/slick/slick-theme.css'
 import SlickListItem from './SlickListItem'
 import { ReactComponent as Prev } from '../../assets/images/left-arrow.svg'
 import { ReactComponent as Next } from '../../assets/images/right-arrow.svg'
-import { computer } from '../../data/computer'
-import { koreanLanguage } from '../../data/koreanLanguage'
 import { useNavigate } from 'react-router-dom'
 
-function SlickList({ section, fetchMore, majorInfo }) {
+function SlickList({ section, fetchMore, majorInfo, selectedMajor }) {
   const navigate = useNavigate()
-  const [computerData, setComputerData] = useState(computer)
-  const [koreanLanguageData, setKoreanLanguageData] = useState(koreanLanguage)
-  const [selectedMajor, setSelectedMajor] = useState(computerData)
   
 
   const settings = {
