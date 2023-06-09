@@ -1,14 +1,17 @@
+import React, { useState } from 'react'
 import { Container } from './WatchList.style'
 import WatchListItem from './WatchListItem'
 
-// parameter: username, 대학, 학과, 학번, [관심학과]
-
-function WatchList({ watchList }) {
+function WatchList({ favoriteData }) {
   return (
     <Container>
       <h2>관심 대외활동</h2>
       <ul>
-        <WatchListItem />
+        {favoriteData.map(item => (
+          <WatchListItem
+            data={item}          
+          />
+        ))}
       </ul>
     </Container>
   )

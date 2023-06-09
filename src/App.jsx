@@ -13,6 +13,7 @@ function App() {
   const navigate = useNavigate()
 
   const [section, setSection] = useState('')
+  const [major, setMajor] = useState('')
   const [userInfo, setUserInfo] = useState({
     name: '',
     major: '',
@@ -40,13 +41,16 @@ function App() {
   /**
    * 더 알아보기 클릭 시 데이터를 요청하고 게시판으로 이동한다.
    */
-  const fetchMore = async section => {
+  const fetchMore = async (section, major) => {
     setSection(section)
     const config = {
-      url: 'https://jsonplaceholder.typicode.com/posts',
       method: 'GET',
     }
-    setPosts(await getAsync(config))
+    // ** url에 쿼리로 major을 입력하여 데이터를 가져온다. **
+    setPosts(
+      await getAsync('https://jsonplaceholder.typicode.com/posts', config)
+    )
+    setMajor(major)
     setLoading(false)
     navigate('/board-list')
   }
@@ -58,10 +62,8 @@ function App() {
     setUserInfo({ ...userInfo, name, major })
   }
 
-  const fetchFavoriteMajor = () => {
+  const fetchFavoriteMajor = () => {}
 
-  }
-  
   return (
     <GlobalThemeProvider>
       <Routes>
@@ -83,6 +85,7 @@ function App() {
           element={
             <BoardList
               section={section}
+              major={major}
               posts={currentPosts(posts)}
               loading={loading}
               postsPerPage={postsPerPage}

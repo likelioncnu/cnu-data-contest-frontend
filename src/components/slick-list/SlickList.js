@@ -13,9 +13,14 @@ import { ReactComponent as Prev } from '../../assets/images/left-arrow.svg'
 import { ReactComponent as Next } from '../../assets/images/right-arrow.svg'
 import { useNavigate } from 'react-router-dom'
 
-function SlickList({ section, fetchMore, majorInfo, selectedMajor }) {
+function SlickList({
+  section,
+  fetchMore,
+  majorInfo,
+  selectedMajor,
+  handleShowWatchList,
+}) {
   const navigate = useNavigate()
-  
 
   const settings = {
     infinite: false,
@@ -37,7 +42,7 @@ function SlickList({ section, fetchMore, majorInfo, selectedMajor }) {
   }
 
   const onClick = () => {
-    fetchMore(section)
+    fetchMore(section, majorInfo.major)
   }
 
   return (
@@ -56,6 +61,7 @@ function SlickList({ section, fetchMore, majorInfo, selectedMajor }) {
             section={section}
             university={majorInfo.university}
             major={majorInfo.major}
+            handleShowWatchList={handleShowWatchList}
           />
         ))}
       </StyledSlider>

@@ -30,22 +30,43 @@ const NoneImage = ({ info, university, major }) => {
   )
 }
 
-function SlickListItem({ info, section, university, major }) {
+function SlickListItem({
+  info,
+  section,
+  university,
+  major,
+  handleShowWatchList,
+}) {
   const [favorite, setFavorite] = useState(false)
   const [cookies, setCookie, removeCookie] = useCookies(['userId'])
+  const regex = /http:\/\//
+
+  const handleFavorite = () => {
+    setFavorite(false)
+  }
 
   const onFavoriteHandler = () => {
     setFavorite(!favorite)
-    // section => intern, contest, seminar
+    switch (section) {
+      case 'intern':
+        handleShowWatchList('취업/인턴', info.title, favorite)
+        break
+      case 'contest':
+        handleShowWatchList('콘테스트', info.title, favorite)
+        break
+      case 'seminar':
+        handleShowWatchList('역량개발', info.title, favorite)
+        break
+    }
   }
-  const regex = /http:\/\//
+
   return (
     <>
       {info !== null && (
         <Container>
           <ImageContainer baseUrl={info.baseUrl} url={info.image}>
             {(info.image === '' || info.image.startsWith('http')) && (
-              <NoneImage info={info} university={university} major={major}/>
+              <NoneImage info={info} university={university} major={major} />
             )}
             <FavoriteButton onClick={onFavoriteHandler}>
               {favorite ? (

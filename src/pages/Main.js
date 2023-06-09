@@ -21,6 +21,7 @@ function Main({ fetchMore, userInfo }) {
     university: '공과대학',
     major: '컴퓨터융합학부',
   })
+  const [favoriteData, setFavoriteData] = useState([])
 
   const handleSelectedMajor = (university, major) => {
     setMajorInfo({ ...majorInfo, university: university, major: major })
@@ -31,6 +32,22 @@ function Main({ fetchMore, userInfo }) {
     setSelectedMajor(computer)
   }
 
+  const handleShowWatchList = (
+    section,
+    title,
+    favorite,
+  ) => {
+    const data = { section: section, title: title }
+    if (!favorite) {
+      setFavoriteData([...favoriteData, data])
+    } else {
+      const removeItem = favoriteData.filter(item => {
+        return data.title !== item.title
+      })
+      setFavoriteData(removeItem)
+    }
+  }
+
   return (
     <BaseLayout type="main">
       <SearchData
@@ -39,13 +56,17 @@ function Main({ fetchMore, userInfo }) {
       />
       <Container>
         <UserInfo userInfo={userInfo} />
-        <WatchList />
+        <WatchList
+          favoriteData={favoriteData}
+        />
         {section.map((name, idx) => (
           <SlickList
             key={idx}
             section={name}
             majorInfo={majorInfo}
             selectedMajor={selectedMajor}
+            fetchMore={fetchMore}
+            handleShowWatchList={handleShowWatchList}
           />
         ))}
       </Container>

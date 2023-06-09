@@ -1,11 +1,13 @@
 import React from 'react'
+import file from '../../assets/images/file.png'
+import { Div, Table, THead, TBody } from './Posts.styles'
 
-function Posts({ posts, loading }) {
+function Posts({ posts, major, loading }) {
   return (
-    <>
+    <Div>
       {loading && <div>loading..</div>}
-      <table>
-        <thead>
+      <Table>
+        <THead>
           <tr>
             <th>번호</th>
             <th>제목</th>
@@ -13,17 +15,23 @@ function Posts({ posts, loading }) {
             <th>날짜</th>
             <th>학과명</th>
           </tr>
-        </thead>
-        <tbody>
+        </THead>
+        <TBody>
           {posts.map(post => (
             <tr key={post.id}>
               <td>{post.id}</td>
               <td>{post.title}</td>
+              {/* post.image가 있으면 file 이미지 출력 */}
+              <td><img src={file} alt="file" /></td>
+              {/* post.update_dt면  */}
+              <td>1998-04-30</td>
+              {/* major */}
+              <td>컴퓨터융합학부</td>
             </tr>
           ))}
-        </tbody>
-      </table>
-    </>
+        </TBody>
+      </Table>
+    </Div>
   )
 }
 

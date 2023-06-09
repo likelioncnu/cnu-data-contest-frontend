@@ -6,6 +6,7 @@ import Pagination from '../components/pagination'
 
 function BoardList({
   section,
+  major,
   posts,
   loading,
   postsPerPage,
@@ -15,7 +16,7 @@ function BoardList({
   return (
     <BaseLayout type="board" section={section}>
       <Container>
-        <Posts posts={posts} loading={loading} />
+        <Posts posts={posts} major={major} loading={loading} />
         <Pagination
           postsPerPage={postsPerPage}
           totalPosts={totalPosts}

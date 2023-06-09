@@ -26,6 +26,7 @@ export const ListItem = styled.li`
 
   span {
     cursor: pointer;
+    margin: 4px;
   }
 
   img {
