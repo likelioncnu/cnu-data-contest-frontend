@@ -7,6 +7,7 @@ import Main from './pages/Main'
 import Login from './pages/Login'
 import FirstLogin from './pages/FirstLogin'
 import BoardList from './pages/BoardList'
+import Post from './pages/Post'
 
 function App() {
   const [cookies, setCookies, removeCookie] = useCookies(['userId'])
@@ -19,6 +20,7 @@ function App() {
     major: '',
   })
   const [favoriteMajor, setFavoriteMajor] = useState('')
+  const [clickedPost, setClickedPost] = useState({})
 
   useEffect(() => {
     cookies.userId === undefined && navigate('/login')
@@ -64,6 +66,14 @@ function App() {
 
   const fetchFavoriteMajor = () => {}
 
+  /**
+   * 사용자가 게시판에서 게시글을 클릭 했을 때 내용을 clickedPost state에 할당한다.
+   */
+  const clickedPostHandler = post => {
+    // state 설정
+    setClickedPost(post)
+  }
+
   return (
     <GlobalThemeProvider>
       <Routes>
@@ -91,8 +101,13 @@ function App() {
               postsPerPage={postsPerPage}
               totalPosts={posts.length}
               paginate={setCurrentPage}
+              clickedPostHandler={clickedPostHandler}
             />
           }
+        ></Route>
+        <Route
+          path="post"
+          element={<Post section={section} clickedPost={clickedPost} />}
         ></Route>
       </Routes>
     </GlobalThemeProvider>

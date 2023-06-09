@@ -49,6 +49,11 @@ export const TBody = styled.tbody`
     text-align: start;
   }
 
+  & > tr > td:nth-child(2) > a {
+    color: #000;
+    text-decoration: none;
+  }
+
   & > tr > td > img {
     position: relative;
     top: 25%;

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { SlickListContainer } from './Main.style'
 import { section, slickListData } from '../data'
 import { useCookies } from 'react-cookie'
 import BaseLayout from '../components/common/base-layout'
@@ -32,11 +33,7 @@ function Main({ fetchMore, userInfo }) {
     setSelectedMajor(computer)
   }
 
-  const handleShowWatchList = (
-    section,
-    title,
-    favorite,
-  ) => {
+  const handleShowWatchList = (section, title, favorite) => {
     const data = { section: section, title: title }
     if (!favorite) {
       setFavoriteData([...favoriteData, data])
@@ -56,19 +53,19 @@ function Main({ fetchMore, userInfo }) {
       />
       <Container>
         <UserInfo userInfo={userInfo} />
-        <WatchList
-          favoriteData={favoriteData}
-        />
-        {section.map((name, idx) => (
-          <SlickList
-            key={idx}
-            section={name}
-            majorInfo={majorInfo}
-            selectedMajor={selectedMajor}
-            fetchMore={fetchMore}
-            handleShowWatchList={handleShowWatchList}
-          />
-        ))}
+        <WatchList favoriteData={favoriteData} />
+        <SlickListContainer>
+          {section.map((name, idx) => (
+            <SlickList
+              key={idx}
+              section={name}
+              majorInfo={majorInfo}
+              selectedMajor={selectedMajor}
+              fetchMore={fetchMore}
+              handleShowWatchList={handleShowWatchList}
+            />
+          ))}
+        </SlickListContainer>
       </Container>
     </BaseLayout>
   )

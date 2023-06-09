@@ -12,11 +12,17 @@ function BoardList({
   postsPerPage,
   totalPosts,
   paginate,
+  clickedPostHandler,
 }) {
   return (
     <BaseLayout type="board" section={section}>
       <Container>
-        <Posts posts={posts} major={major} loading={loading} />
+        <Posts
+          posts={posts}
+          major={major}
+          loading={loading}
+          clickedPostHandler={clickedPostHandler}
+        />
         <Pagination
           postsPerPage={postsPerPage}
           totalPosts={totalPosts}

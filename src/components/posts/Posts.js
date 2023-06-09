@@ -1,8 +1,13 @@
 import React from 'react'
 import file from '../../assets/images/file.png'
+import { Link } from 'react-router-dom'
 import { Div, Table, THead, TBody } from './Posts.styles'
 
-function Posts({ posts, major, loading }) {
+function Posts({ posts, major, loading, clickedPostHandler }) {
+  const onClick = post => {
+    clickedPostHandler(post)
+  }
+
   return (
     <Div>
       {loading && <div>loading..</div>}
@@ -20,9 +25,15 @@ function Posts({ posts, major, loading }) {
           {posts.map(post => (
             <tr key={post.id}>
               <td>{post.id}</td>
-              <td>{post.title}</td>
+              <td>
+                <Link to="/post" onClick={() => onClick(post)}>
+                  <span>{post.title}</span>
+                </Link>
+              </td>
               {/* post.image가 있으면 file 이미지 출력 */}
-              <td><img src={file} alt="file" /></td>
+              <td>
+                <img src={file} alt="file" />
+              </td>
               {/* post.update_dt면  */}
               <td>1998-04-30</td>
               {/* major */}

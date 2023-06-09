@@ -1,36 +1,41 @@
 import styled from 'styled-components'
 
 export const PageUl = styled.ul`
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
   float: left;
   list-style: none;
   text-align: center;
   border-radius: 3px;
   color: white;
   padding: 1px;
-  border-top: 3px solid #186ead;
-  border-bottom: 3px solid #186ead;
-  background-color: rgba(0, 0, 0, 0.4);
 `
 
 export const PageLi = styled.li`
   display: inline-block;
-  font-size: 17px;
-  font-weight: 600;
+  font-size: 16px;
+  color: #7c7c7c;
   padding: 5px;
-  border-radius: 5px;
-  width: 25px;
+  border: 1px solid #d9d9d9;
+  width: 32px;
+  height: 32px;
+  margin-right: 4px;
+  margin-bottom: 102px;
+
   &:hover {
     cursor: pointer;
-    color: white;
-    background-color: #263a6c;
+    color: black;
   }
+
   &:focus::after {
-    color: white;
-    background-color: #263a6c;
+    color: black;
+    font-weight: 700;
   }
 `
 
 export const PageSpan = styled.span`
+  line-height: 16px;
   &:hover::after,
   &:focus::after {
     border-radius: 100%;
