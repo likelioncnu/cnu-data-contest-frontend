@@ -4,7 +4,9 @@ import Watch from '../../assets/images/watch.png'
 
 function WatchListItem({ listItem }) {
   return <ListItem>
-    <span>[공모전] title</span>
+    <span>[취업/인턴]
+      <br/>
+      (TIPS타운 X 소프트웨어중심대학사언단) TIPS타운 연계 백마인턴십</span>
     <img src={Watch} alt="watch"></img>
     </ListItem>
 }

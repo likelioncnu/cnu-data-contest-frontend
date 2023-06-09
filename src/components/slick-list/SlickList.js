@@ -1,3 +1,4 @@
+import React, { useState } from 'react'
 import {
   Container,
   Section,
@@ -10,10 +11,16 @@ import 'slick-carousel/slick/slick-theme.css'
 import SlickListItem from './SlickListItem'
 import { ReactComponent as Prev } from '../../assets/images/left-arrow.svg'
 import { ReactComponent as Next } from '../../assets/images/right-arrow.svg'
+import { computer } from '../../data/computer'
+import { koreanLanguage } from '../../data/koreanLanguage'
 import { useNavigate } from 'react-router-dom'
 
-function SlickList({ section, data, fetchMore}) {
+function SlickList({ section, fetchMore, majorInfo }) {
   const navigate = useNavigate()
+  const [computerData, setComputerData] = useState(computer)
+  const [koreanLanguageData, setKoreanLanguageData] = useState(koreanLanguage)
+  const [selectedMajor, setSelectedMajor] = useState(computerData)
+  
 
   const settings = {
     infinite: false,
@@ -47,12 +54,14 @@ function SlickList({ section, data, fetchMore}) {
         <a onClick={onClick}>더 알아보기&gt;</a>
       </Section>
       <StyledSlider {...settings}>
-        {data.map((item, idx) => (
+        {selectedMajor[section].map((item, idx) => (
           <SlickListItem
             key={idx}
             info={item}
             section={section}
-          ></SlickListItem>
+            university={majorInfo.university}
+            major={majorInfo.major}
+          />
         ))}
       </StyledSlider>
     </Container>

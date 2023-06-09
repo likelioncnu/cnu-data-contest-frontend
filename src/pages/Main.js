@@ -13,39 +13,23 @@ import API from '../config'
 function Main({ fetchMore, userInfo }) {
   const [data, setData] = useState([])
   const [cookies, setCookies, removeCookie] = useCookies(['userId'])
+  const [majorInfo, setMajorInfo] = useState({
+    university: '공과대학',
+    major: '컴퓨터융합학부',
+  })
 
-  /**
-   * 사용자의 관심학과의 대한 각 section별 데이터를 요청/응답 받는다.
-   */
-  useEffect(() => {
-    const url = API.MAJOR
-    const config = {
-      method: 'GET',
-      data: {
-        userId: cookies['userId'],
-      },
-    }
-    const fetchMajor = async () => {
-      const res = await getAsync(url, config)
-      setData([...data, res])
-    }
-    fetchMajor()
-    console.log(data)
-  }, [])
+  const handleSelectedMajor = (university, major) => {
+    setMajorInfo({ ...majorInfo, university: university, major: major })
+  }
 
   return (
     <BaseLayout type="main">
-      <SearchData />
+      <SearchData handleSelectedMajor={handleSelectedMajor} />
       <Container>
         <UserInfo userInfo={userInfo} />
         <WatchList />
         {section.map((name, idx) => (
-          <SlickList
-            key={idx}
-            section={name}
-            data={slickListData[name]}
-            fetchMore={fetchMore}
-          />
+          <SlickList key={idx} section={name} majorInfo={majorInfo} />
         ))}
       </Container>
     </BaseLayout>

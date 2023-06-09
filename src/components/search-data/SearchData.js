@@ -14,7 +14,7 @@ import DropDown from '../common/UI/drop-down'
 import Button from '../common/UI/button'
 import dropdown from '../../assets/images/dropdown.svg'
 
-function SearchData() {
+function SearchData({ handleSelectedMajor }) {
   const [universityDropdownVisibility, setUniversityDropdownVisibility] =
     useState(false)
   const [majorDropdownVisibility, setMajorDropdownVisibility] = useState(false)
@@ -49,8 +49,7 @@ function SearchData() {
   }
 
   const handleSearch = () => {
-    console.log(inputUniversity)
-    console.log(inputMajor)
+    handleSelectedMajor(inputUniversity, inputMajor)
   }
 
   const handleShowFavorite = () => {
