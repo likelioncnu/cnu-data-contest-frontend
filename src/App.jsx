@@ -73,7 +73,7 @@ function App() {
    */
   const fetchFavoriteMajor = async selectedMajor => {
     setFavoriteMajor({
-      userId: cookies['userId'],
+      userId: `${cookies['userId']}`,
       favoriteMajor: selectedMajor,
     })
     const config = {
@@ -81,16 +81,15 @@ function App() {
       data: favoriteMajor,
     }
     const res = await getAsync(API.MAJOR, config)
-    // 관심학과를 요청하면 해당 관심학과가 데이터베이스 추가 되고
-    // 응답값은 ..?
-    window.location.href = '/'
+    if (res.data !== null) {
+      window.location.href = '/'
+    }
   }
 
   /**
    * 사용자가 게시판에서 게시글을 클릭 했을 때 내용을 clickedPost state에 할당한다.
    */
   const clickedPostHandler = post => {
-    // state 설정
     setClickedPost(post)
   }
 
@@ -99,7 +98,13 @@ function App() {
       <Routes>
         <Route
           path="/"
-          element={<Main fetchMore={fetchMore} userInfo={userInfo} />}
+          element={
+            <Main
+              fetchMore={fetchMore}
+              userInfo={userInfo}
+              fetchFavoriteMajor={fetchFavoriteMajor}
+            />
+          }
         />
         <Route
           path="/login"

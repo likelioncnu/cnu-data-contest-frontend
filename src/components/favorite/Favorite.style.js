@@ -1,14 +1,33 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 export const Container = styled.div`
   position: absolute;
-  top: 235px;
-  left: 875px;
+  ${({ type }) => {
+    if (type === 'main') {
+      return css`
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+        z-index: 9999;
+      `
+    } else {
+      return css`
+        top: 235px;
+        left: 875px;
+      `
+    }
+  }}
   width: 684px;
   height: 657px;
   background-color: #fff;
   border-radius: 8px;
   padding: 70px 40px;
+  
+  hr + button {
+    background-color: #000;
+  }
 `
 
 export const Heading = styled.h1`
@@ -56,7 +75,7 @@ export const Hr = styled.hr`
 
 export const MajorContainer = styled.ul`
   display: flex;
-  flex-wrap: wrap; 
+  flex-wrap: wrap;
   padding: 24px 24px 4px 24px;
   max-height: 340px;
   overflow-y: scroll;

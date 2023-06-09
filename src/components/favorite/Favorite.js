@@ -18,8 +18,6 @@ import dropdown from '../../assets/images/dropdown.svg'
 import Button from '../common/UI/button'
 import DropDown from '../common/UI/drop-down'
 import { university } from '../../data'
-import { getAsync } from '../../api'
-import API from '../../config'
 
 const List = ({ item, setSelectedMajor }) => {
   const onClick = () => {
@@ -35,7 +33,7 @@ const List = ({ item, setSelectedMajor }) => {
   )
 }
 
-function Favorite({ fetchFavoriteMajor }) {
+function Favorite({ type, fetchFavoriteMajor }) {
   const [cookies, setCookies, removeCookies] = useCookies(['userId'])
   const [dropdownVisibility, setDropdownVisibility] = useState(false)
   const [selectedUniversity, setSelectedUniversity] = useState('단과대학')
@@ -94,7 +92,7 @@ function Favorite({ fetchFavoriteMajor }) {
   }
 
   return (
-    <Container>
+    <Container type={type}>
       <Heading>관심학과 선택하기</Heading>
       <SearchContainer>
         <SelectContainer onClick={handleDropdownVisibility}>
@@ -126,9 +124,11 @@ function Favorite({ fetchFavoriteMajor }) {
         ))}
       </MajorContainer>
       <Hr />
-      <Button type="approve" size="mid" onClick={onSubmit}>
-        선택완료
-      </Button>
+      <div>
+        <Button type="approve" size="mid" onClick={onSubmit}>
+          선택완료
+        </Button>
+      </div>
     </Container>
   )
 }

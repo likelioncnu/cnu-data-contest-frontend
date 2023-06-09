@@ -11,7 +11,6 @@ import 'slick-carousel/slick/slick-theme.css'
 import SlickListItem from './SlickListItem'
 import { ReactComponent as Prev } from '../../assets/images/left-arrow.svg'
 import { ReactComponent as Next } from '../../assets/images/right-arrow.svg'
-import { useNavigate } from 'react-router-dom'
 
 function SlickList({
   section,
@@ -20,8 +19,6 @@ function SlickList({
   selectedMajor,
   handleShowWatchList,
 }) {
-  const navigate = useNavigate()
-
   const settings = {
     infinite: false,
     speed: 500,

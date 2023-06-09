@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Button from '../common/UI/button'
 import { useCookies } from 'react-cookie'
 import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
 import {
   Container,
   UserInfoTitle,
@@ -13,10 +14,10 @@ import {
 import API from '../../config'
 import getAsync from '../../api'
 
-function UserInfo({ userInfo }) {
+function UserInfo({ userInfo, handleShowFavorite }) {
   const navigate = useNavigate()
   const [cookies, setCookies, removeCookie] = useCookies(['userId'])
-  const [favoriteMajor, setFavoriteMajor] = useState('')
+  const [favoriteMajorData, setFavoriteMajorData] = useState('')
 
   /**
    * 사용자의 관심학과 요청
@@ -24,20 +25,15 @@ function UserInfo({ userInfo }) {
    */
   useEffect(() => {
     const getFavoriteMajor = async () => {
-      const url = API.MAJOR
+      const url = API.FAVORITE_MAJOR
       const config = {
         method: 'GET',
       }
-      const { favoriteMajor } = await getAsync(`${url}?userId=${cookies['userId']}`, config)
-      setFavoriteMajor(favoriteMajor)
+      const res = await getAsync(`${url}?userId=${cookies['userId']}`, config)
+      setFavoriteMajorData(res.major)
     }
     getFavoriteMajor()
   }, [])
-
-  /**
-   * 사용자의 관심학과 수정
-   */
-  const onClick = () => {}
 
   const { name, major } = userInfo
   const onLogout = () => {
@@ -59,10 +55,10 @@ function UserInfo({ userInfo }) {
       <div>
         <UserInfoFavorite>
           <h2>관심학과</h2>
-          <span onClick={onClick}>수정하기</span>
+          <span onClick={handleShowFavorite}>수정하기</span>
         </UserInfoFavorite>
         <FavoriteList>
-          <ListItem>{favoriteMajor}</ListItem>
+          <ListItem>{favoriteMajorData}</ListItem>
         </FavoriteList>
       </div>
     </Container>

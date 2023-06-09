@@ -8,12 +8,13 @@ import UserInfo from '../components/user-info'
 import WatchList from '../components/watch-list/WatchList'
 import SlickList from '../components/slick-list/SlickList'
 import SearchData from '../components/search-data'
+import Favorite from '../components/favorite'
 import { computer } from '../data/computer'
 import { koreanLanguage } from '../data/koreanLanguage'
 import getAsync from '../api'
 import API from '../config'
 
-function Main({ fetchMore, userInfo }) {
+function Main({ fetchMore, userInfo, fetchFavoriteMajor }) {
   const [cookies, setCookies, removeCookie] = useCookies(['userId'])
   const [computerData, setComputerData] = useState(computer)
   const [koreanLanguageData, setKoreanLanguageData] = useState(koreanLanguage)
@@ -23,6 +24,7 @@ function Main({ fetchMore, userInfo }) {
     major: '컴퓨터융합학부',
   })
   const [favoriteData, setFavoriteData] = useState([])
+  const [isFavorite, setIsFavorite] = useState(false)
 
   const handleSelectedMajor = (university, major) => {
     setMajorInfo({ ...majorInfo, university: university, major: major })
@@ -45,6 +47,10 @@ function Main({ fetchMore, userInfo }) {
     }
   }
 
+  const handleShowFavorite = () => {
+    setIsFavorite(!isFavorite)
+  }
+
   return (
     <BaseLayout type="main">
       <SearchData
@@ -52,7 +58,7 @@ function Main({ fetchMore, userInfo }) {
         handleShowFavoriteMajorData={handleShowFavoriteMajorData}
       />
       <Container>
-        <UserInfo userInfo={userInfo} />
+        <UserInfo userInfo={userInfo} handleShowFavorite={handleShowFavorite} />
         <WatchList favoriteData={favoriteData} />
         <SlickListContainer>
           {section.map((name, idx) => (
@@ -67,6 +73,9 @@ function Main({ fetchMore, userInfo }) {
           ))}
         </SlickListContainer>
       </Container>
+      {isFavorite && (
+        <Favorite type="main" fetchFavoriteMajor={fetchFavoriteMajor} />
+      )}
     </BaseLayout>
   )
 }

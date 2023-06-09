@@ -55,7 +55,6 @@ function UserLogin({ userInfoHandler }) {
         },
       }
       memberValue[isMember]()
-      console.log(isMember, major, name)
     }
   }
 

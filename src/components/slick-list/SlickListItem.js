@@ -9,10 +9,7 @@ import {
 import notFavoriteImage from '../../assets/images/not-favorite.png'
 import favoriteImage from '../../assets/images/favorite.png'
 import { useCookies } from 'react-cookie'
-import getAsync from '../../api'
-import API from '../../config'
 
-// 별을 누르면 별을 채우고 사용자의 관심활동에 추가시키도록 요청한다.
 const NoneImage = ({ info, university, major }) => {
   const htmlString = info.content
   const tempElement = document.createElement('div')

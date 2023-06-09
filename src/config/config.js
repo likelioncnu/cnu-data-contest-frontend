@@ -1,7 +1,7 @@
 const API = {
   LOGIN: `/login`,
   MAJOR: `/major`,
-  FAVORITE_MAJOR: `/favorite-major`,
+  FAVORITE_MAJOR: `/favoriteMajor`,
   FAVORITE: `/favorite`,
   BOARD: `/board`,
   SEARCH: `/search`,
