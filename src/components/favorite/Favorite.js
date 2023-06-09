@@ -42,10 +42,6 @@ function Favorite({ fetchFavoriteMajor }) {
   const [inputMajor, setInputMajor] = useState('')
   const [searchMajor, setSearchMajor] = useState([])
   const [selectedMajor, setSelectedMajor] = useState('')
-  const [data, setData] = useState({
-    userId: '',
-    favoriteMajor: '',
-  })
 
   const handleDropdownVisibility = () => {
     setDropdownVisibility(!dropdownVisibility)
@@ -94,16 +90,7 @@ function Favorite({ fetchFavoriteMajor }) {
   }
 
   const onSubmit = () => {
-    setData({
-      ...data,
-      userId: cookies['userId'],
-      favoriteMajor: selectedMajor
-    })
-    const config = {
-      method: 'POST',
-      data,
-    }
-    // major가 있으면 main페이지로 이동
+    fetchFavoriteMajor(selectedMajor)
   }
 
   return (

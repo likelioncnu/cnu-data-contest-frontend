@@ -24,12 +24,11 @@ function UserInfo({ userInfo }) {
    */
   useEffect(() => {
     const getFavoriteMajor = async () => {
-      const url = API.FAVORITE_MAJOR
+      const url = API.MAJOR
       const config = {
         method: 'GET',
-        data: cookies['userId'],
       }
-      const { favoriteMajor } = await getAsync(url, config)
+      const { favoriteMajor } = await getAsync(`${url}?userId=${cookies['userId']}`, config)
       setFavoriteMajor(favoriteMajor)
     }
     getFavoriteMajor()

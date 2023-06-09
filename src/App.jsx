@@ -8,6 +8,7 @@ import Login from './pages/Login'
 import FirstLogin from './pages/FirstLogin'
 import BoardList from './pages/BoardList'
 import Post from './pages/Post'
+import API from './config'
 
 function App() {
   const [cookies, setCookies, removeCookie] = useCookies(['userId'])
@@ -19,7 +20,10 @@ function App() {
     name: '',
     major: '',
   })
-  const [favoriteMajor, setFavoriteMajor] = useState('')
+  const [favoriteMajor, setFavoriteMajor] = useState({
+    userId: '',
+    favoriteMajor: '',
+  })
   const [clickedPost, setClickedPost] = useState({})
 
   useEffect(() => {
@@ -64,7 +68,23 @@ function App() {
     setUserInfo({ ...userInfo, name, major })
   }
 
-  const fetchFavoriteMajor = () => {}
+  /**
+   * 처음 로그인한 사용자가 관심학과를 선택했을 경우 관심학과를 설정하도록 한다.
+   */
+  const fetchFavoriteMajor = async selectedMajor => {
+    setFavoriteMajor({
+      userId: cookies['userId'],
+      favoriteMajor: selectedMajor,
+    })
+    const config = {
+      method: 'POST',
+      data: favoriteMajor,
+    }
+    const res = await getAsync(API.MAJOR, config)
+    // 관심학과를 요청하면 해당 관심학과가 데이터베이스 추가 되고
+    // 응답값은 ..?
+    window.location.href = '/'
+  }
 
   /**
    * 사용자가 게시판에서 게시글을 클릭 했을 때 내용을 clickedPost state에 할당한다.

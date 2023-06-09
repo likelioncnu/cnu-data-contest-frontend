@@ -7,7 +7,6 @@ function Post({ section, clickedPost }) {
   return (
     <BaseLayout type="board" section={section}>
       <Container>
-        {section}
         <PostContent clickedPost={clickedPost} />
       </Container>
     </BaseLayout>
