@@ -29,7 +29,7 @@ function UserInfo({ userInfo, handleShowFavorite }) {
       const config = {
         method: 'GET',
       }
-      const res = await getAsync(`${url}?userId=${cookies['userId']}`, config)
+      const res = await getAsync(`${process.env.REACT_APP_DB_HOST}${url}?userId=${cookies['userId']}`, config)
       setFavoriteMajorData(res.major)
     }
     getFavoriteMajor()

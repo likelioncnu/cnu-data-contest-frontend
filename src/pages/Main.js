@@ -11,8 +11,6 @@ import SearchData from '../components/search-data'
 import Favorite from '../components/favorite'
 import { computer } from '../data/computer'
 import { koreanLanguage } from '../data/koreanLanguage'
-import getAsync from '../api'
-import API from '../config'
 
 function Main({
   fetchMore,
