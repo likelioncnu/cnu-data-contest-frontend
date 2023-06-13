@@ -15,6 +15,7 @@ const handleTransferDate = (itemDate) => {
 
 function Posts({ posts, major, loading, clickedPostHandler }) {
   let i = 1
+  
   const onClick = post => {
     clickedPostHandler(post)
   }
@@ -42,7 +43,6 @@ function Posts({ posts, major, loading, clickedPostHandler }) {
                 </Link>
               </td>
               <td>{post.image !== '' && <img src={file} alt="file" />}</td>
-              {/* post.update_dt면  */}
               <td>{handleTransferDate(post.update_dt)}</td>
               <td>{major}</td>
             </tr>

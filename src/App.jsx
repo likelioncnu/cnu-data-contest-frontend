@@ -97,6 +97,16 @@ function App() {
     setClickedPost(post)
   }
 
+  // const fetchDetailPost = async () => {
+  //   const config = {
+  //     method: 'GET',
+  //   }
+  //   const res = await getAsync(
+  //     `${API.BOARD}?section=${section}major=${major}&title=${encodeURIComponent("[소프트웨어중심대학] 2023 특별장학금 마일리지 확인 웹사이트 안내")}`,
+  //     config
+  //   )
+  //   console.log(res)
+  // }
   return (
     <GlobalThemeProvider>
       <Routes>
