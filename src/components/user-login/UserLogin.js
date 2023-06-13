@@ -40,21 +40,35 @@ function UserLogin({ userInfoHandler }) {
       setFailedLogin(true)
     } else {
       const { isMember, major, name } = await getAsync(API.LOGIN, config)
-      const memberValue = {
-        none: () => {
+      switch (isMember) {
+        case 'none':
           setCookies('userId', input.userId)
           navigate('/first-login')
-        },
-        false: () => {
+          break
+        case 'false':
           setFailedLogin(!failedLogin)
-        },
-        true: () => {
+          break
+        case 'true':
           setCookies('userId', input.userId)
           userInfoHandler(name, major)
           navigate('/')
-        },
       }
-      memberValue[isMember]()
+
+      // const memberValue = {
+      //   none: () => {
+      //     setCookies('userId', input.userId)
+      //     navigate('/first-login')
+      //   },
+      //   false: () => {
+      //     setFailedLogin(!failedLogin)
+      //   },
+      //   true: () => {
+      //     setCookies('userId', input.userId)
+      //     userInfoHandler(name, major)
+      //     navigate('/')
+      //   },
+      // }
+      // memberValue[isMember]()
     }
   }
 

@@ -56,6 +56,7 @@ function App() {
       `${API.MORE}?major=${major}&section=${section}`,
       config
     )
+    console.log(res)
     const newPosts = res.filter(item => {
       return item !== null
     })

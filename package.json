@@ -21,7 +21,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "CI=false react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -43,5 +43,6 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://34.64.142.115:8080"
+  "proxy": "http://34.64.142.115:8080",
+  "homepage": "."
 }
