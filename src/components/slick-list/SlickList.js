@@ -18,6 +18,7 @@ function SlickList({
   majorInfo,
   selectedMajor,
   handleShowWatchList,
+  clickedSlickListItemHandler,
 }) {
   const settings = {
     infinite: false,
@@ -59,6 +60,7 @@ function SlickList({
             university={majorInfo.university}
             major={majorInfo.major}
             handleShowWatchList={handleShowWatchList}
+            clickedSlickListItemHandler={clickedSlickListItemHandler}
           />
         ))}
       </StyledSlider>

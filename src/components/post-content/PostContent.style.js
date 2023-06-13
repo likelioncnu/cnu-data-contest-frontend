@@ -58,4 +58,6 @@ export const ContentContainer = styled.div`
 
 export const Content = styled.div`
   padding: 40px;
+  font-size: 16px;
+  line-height: 20px;
 `

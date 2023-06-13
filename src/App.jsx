@@ -97,16 +97,25 @@ function App() {
     setClickedPost(post)
   }
 
-  // const fetchDetailPost = async () => {
-  //   const config = {
-  //     method: 'GET',
-  //   }
-  //   const res = await getAsync(
-  //     `${API.BOARD}?section=${section}major=${major}&title=${encodeURIComponent("[소프트웨어중심대학] 2023 특별장학금 마일리지 확인 웹사이트 안내")}`,
-  //     config
-  //   )
-  //   console.log(res)
-  // }
+  /**
+   * 사용자가 SlickList에서 item을 클릭 했을 때 post경로로 이동한다.
+   */
+  const clickedSlickListItemHandler = async (section, major, title) => {
+    setSection(section)
+    const config = {
+      method: 'GET',
+    }
+    const res = await getAsync(
+      `${API.MORE}?major=${major}&section=${section}`,
+      config
+    )
+    const newPosts = res.filter(item => {
+      return item !== null && item.title === title
+    })
+    setClickedPost(...newPosts)
+    navigate('/post')
+  }
+
   return (
     <GlobalThemeProvider>
       <Routes>
@@ -117,6 +126,7 @@ function App() {
               fetchMore={fetchMore}
               userInfo={userInfo}
               fetchFavoriteMajor={fetchFavoriteMajor}
+              clickedSlickListItemHandler={clickedSlickListItemHandler}
             />
           }
         />

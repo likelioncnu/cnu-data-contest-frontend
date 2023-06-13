@@ -33,6 +33,7 @@ function SlickListItem({
   university,
   major,
   handleShowWatchList,
+  clickedSlickListItemHandler
 }) {
   const [favorite, setFavorite] = useState(false)
   const [cookies, setCookie, removeCookie] = useCookies(['userId'])
@@ -60,7 +61,7 @@ function SlickListItem({
   return (
     <>
       {info !== null && (
-        <Container>
+        <Container onClick={() => clickedSlickListItemHandler(section, major, info.title)}>
           <ImageContainer baseUrl={info.baseUrl} url={info.image}>
             {(info.image === '' || info.image.startsWith('http')) && (
               <NoneImage info={info} university={university} major={major} />

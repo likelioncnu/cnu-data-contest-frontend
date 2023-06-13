@@ -14,7 +14,12 @@ import { koreanLanguage } from '../data/koreanLanguage'
 import getAsync from '../api'
 import API from '../config'
 
-function Main({ fetchMore, userInfo, fetchFavoriteMajor }) {
+function Main({
+  fetchMore,
+  userInfo,
+  fetchFavoriteMajor,
+  clickedSlickListItemHandler,
+}) {
   const [cookies, setCookies, removeCookie] = useCookies(['userId'])
   const [computerData, setComputerData] = useState(computer)
   const [koreanLanguageData, setKoreanLanguageData] = useState(koreanLanguage)
@@ -28,7 +33,7 @@ function Main({ fetchMore, userInfo, fetchFavoriteMajor }) {
 
   const handleSelectedMajor = (university, major) => {
     setMajorInfo({ ...majorInfo, university: university, major: major })
-    if(majorInfo.major === '국어국문학과') {
+    if (majorInfo.major === '국어국문학과') {
       setSelectedMajor(koreanLanguage)
     }
   }
@@ -72,6 +77,7 @@ function Main({ fetchMore, userInfo, fetchFavoriteMajor }) {
               selectedMajor={selectedMajor}
               fetchMore={fetchMore}
               handleShowWatchList={handleShowWatchList}
+              clickedSlickListItemHandler={clickedSlickListItemHandler}
             />
           ))}
         </SlickListContainer>

@@ -11,7 +11,7 @@ import {
 } from './PostContent.style'
 
 const ServerHTMLRendering = ({ htmlString }) => {
-  const withoutImgTags = htmlString.replace(/<img\b[^>]*>/gi, '');
+  const withoutImgTags = htmlString.replace(/<img\b[^>]*>/gi, '')
 
   return <div dangerouslySetInnerHTML={{ __html: withoutImgTags }} />
 }
@@ -19,9 +19,7 @@ const ServerHTMLRendering = ({ htmlString }) => {
 function PostContent({ clickedPost }) {
   const { title, baseUrl, image, writer, update_dt, content } = clickedPost
   const [imageUrl, setIamgeUrl] = useState(`${baseUrl}${image}`)
-
-  console.log(content)
-
+  
   const handleTransferDate = itemDate => {
     const data = JSON.parse(itemDate)
     const date = new Date(data.time)
@@ -46,7 +44,9 @@ function PostContent({ clickedPost }) {
         </Sub>
         <Content>
           <ContentContainer>
-            {image !== '' && <img src={imageUrl} alt={title} />}
+            {image === '' || image.startsWith('http') ? null : (
+              <img src={imageUrl} alt={title} />
+            )}
             <ServerHTMLRendering htmlString={content} />
           </ContentContainer>
         </Content>
