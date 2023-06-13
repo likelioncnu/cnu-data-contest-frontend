@@ -17,7 +17,13 @@ export const ImageContainer = styled.div`
   background: #cde1f8;
   border-radius: 8px;
   margin-bottom: 14px;
+`
+
+export const Image = styled.div`
   background-image: url(${({ baseUrl, url }) => `${baseUrl}${url}`});
+  width: 100%;
+  height: 230px;
+  border-radius: 8px;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;

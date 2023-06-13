@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import {
   Container,
   ImageContainer,
+  Image,
   NoneImageContainer,
   FavoriteButton,
   Title,
@@ -10,14 +11,22 @@ import notFavoriteImage from '../../assets/images/not-favorite.png'
 import favoriteImage from '../../assets/images/favorite.png'
 import { useCookies } from 'react-cookie'
 
-const NoneImage = ({ info, university, major }) => {
+const NoneImage = ({
+  info,
+  university,
+  major,
+  section,
+  clickedSlickListItemHandler,
+}) => {
   const htmlString = info.content
   const tempElement = document.createElement('div')
   tempElement.innerHTML = htmlString
   const text = tempElement.textContent || tempElement.innerText || ''
 
   return (
-    <NoneImageContainer>
+    <NoneImageContainer
+      onClick={() => clickedSlickListItemHandler(section, major, info.title)}
+    >
       <span>
         {university}/{major}
       </span>
@@ -33,7 +42,7 @@ function SlickListItem({
   university,
   major,
   handleShowWatchList,
-  clickedSlickListItemHandler
+  clickedSlickListItemHandler,
 }) {
   const [favorite, setFavorite] = useState(false)
   const [cookies, setCookie, removeCookie] = useCookies(['userId'])
@@ -61,10 +70,24 @@ function SlickListItem({
   return (
     <>
       {info !== null && (
-        <Container onClick={() => clickedSlickListItemHandler(section, major, info.title)}>
-          <ImageContainer baseUrl={info.baseUrl} url={info.image}>
-            {(info.image === '' || info.image.startsWith('http')) && (
-              <NoneImage info={info} university={university} major={major} />
+        <Container>
+          <ImageContainer>
+            {info.image === '' || info.image.startsWith('http') ? (
+              <NoneImage
+                info={info}
+                university={university}
+                major={major}
+                section={section}
+                clickedSlickListItemHandler={clickedSlickListItemHandler}
+              />
+            ) : (
+              <Image
+                baseUrl={info.baseUrl}
+                url={info.image}
+                onClick={() =>
+                  clickedSlickListItemHandler(section, major, info.title)
+                }
+              ></Image>
             )}
             <FavoriteButton onClick={onFavoriteHandler}>
               {favorite ? (
@@ -74,7 +97,11 @@ function SlickListItem({
               )}
             </FavoriteButton>
           </ImageContainer>
-          <div>
+          <div
+            onClick={() =>
+              clickedSlickListItemHandler(section, major, info.title)
+            }
+          >
             <span>{`${university} / ${major}`}</span>
             <Title>
               <h2>{info.title}</h2>

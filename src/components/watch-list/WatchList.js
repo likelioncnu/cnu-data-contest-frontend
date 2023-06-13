@@ -7,8 +7,9 @@ function WatchList({ favoriteData }) {
     <Container>
       <h2>관심 대외활동</h2>
       <ul>
-        {favoriteData.map(item => (
+        {favoriteData.map((item, idx) => (
           <WatchListItem
+            key={idx}
             data={item}          
           />
         ))}

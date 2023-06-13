@@ -119,8 +119,8 @@ function Favorite({ type, fetchFavoriteMajor }) {
       </SearchContainer>
       <Hr />
       <MajorContainer>
-        {searchMajor.map(item => (
-          <List item={item} setSelectedMajor={setSelectedMajor} />
+        {searchMajor.map((item, id) => (
+          <List item={item} key={id} setSelectedMajor={setSelectedMajor} />
         ))}
       </MajorContainer>
       <Hr />

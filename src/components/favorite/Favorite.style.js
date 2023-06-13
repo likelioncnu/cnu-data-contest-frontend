@@ -24,9 +24,10 @@ export const Container = styled.div`
   background-color: #fff;
   border-radius: 8px;
   padding: 70px 40px;
-  
-  hr + button {
-    background-color: #000;
+
+  div:last-child {
+    margin-top: 16px;
+    text-align: end;
   }
 `
 

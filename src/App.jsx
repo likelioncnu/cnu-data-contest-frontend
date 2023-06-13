@@ -85,7 +85,7 @@ function App() {
       data: favoriteMajor,
     }
     const res = await getAsync(API.MAJOR, config)
-    if (res.data !== null) {
+    if (res !== null) {
       window.location.href = '/'
     }
   }
@@ -98,7 +98,7 @@ function App() {
   }
 
   /**
-   * 사용자가 SlickList에서 item을 클릭 했을 때 post경로로 이동한다.
+   * 사용자가 SlickList에서 item을 클릭 했을 때 /post 경로로 이동한다.
    */
   const clickedSlickListItemHandler = async (section, major, title) => {
     setSection(section)

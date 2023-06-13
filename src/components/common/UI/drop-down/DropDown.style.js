@@ -1,17 +1,18 @@
 import styled, { css } from 'styled-components'
 
 export const Article = styled.article`
-  ${({ type }) => type === 'favorite' && css`
-    position: absolute;
-    top: 160px;
+  ${({ type }) =>
+    type === 'favorite' &&
+    css`
+      position: absolute;
+      top: 160px;
+    `}
 
-  `}
   & > ul {
     border-radius: 4px;
     background-color: #fff;
     padding: 8px;
     border: 1px solid #9747ff;
-    margin-right: 60px;
   }
 
   & > ul > li {
@@ -27,6 +28,12 @@ export const Article = styled.article`
 
   & > ul > li:last-child {
     margin-bottom: 0;
+  }
+
+  &:last-child {
+    position: relative;
+    top: 0;
+    left: 150px;
   }
 
   @keyframes slide-fade-in-dropdown-animation {
