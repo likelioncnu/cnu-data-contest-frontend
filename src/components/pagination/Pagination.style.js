@@ -35,6 +35,8 @@ export const PageLi = styled.li`
 `
 
 export const PageSpan = styled.span`
+  position: relative;
+  top: 4px;
   line-height: 16px;
   &:hover::after,
   &:focus::after {

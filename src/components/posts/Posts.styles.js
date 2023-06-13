@@ -10,6 +10,7 @@ export const Div = styled.div`
 export const Table = styled.table`
   width: 1000px;
   margin-bottom: 26px;
+  table-layout: fixed;
 `
 
 export const THead = styled.thead`
@@ -27,7 +28,6 @@ export const THead = styled.thead`
 
 export const TBody = styled.tbody`
   & > tr > td {
-    table-layout: fixed;
     height: 68px;
     text-align: center;
     line-height: 68px;
@@ -35,17 +35,11 @@ export const TBody = styled.tbody`
     font-weight: 600;
   }
 
-  & > tr > td:first-child {
-    width: 85px;
-    padding-right: 20px;
-  }
-
   & > tr > td:nth-child(2) {
     overflow: hidden;
     white-space: nowrap;
     word-break:break-all;
     text-overflow: ellipsis;
-    width: 507px;
     text-align: start;
   }
 
@@ -56,8 +50,6 @@ export const TBody = styled.tbody`
 
   & > tr > td > img {
     position: relative;
-    top: 25%;
-    left: 10%;
-    transform: translate(-25%, -25%);
+    top: 15%;
   }
 `

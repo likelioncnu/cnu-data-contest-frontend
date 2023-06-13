@@ -28,10 +28,13 @@ function Main({ fetchMore, userInfo, fetchFavoriteMajor }) {
 
   const handleSelectedMajor = (university, major) => {
     setMajorInfo({ ...majorInfo, university: university, major: major })
+    if(majorInfo.major === '국어국문학과') {
+      setSelectedMajor(koreanLanguage)
+    }
   }
 
   const handleShowFavoriteMajorData = (university, major) => {
-    setMajorInfo({ ...majorInfo, university: university, major, major })
+    setMajorInfo({ ...majorInfo, university: university, major: major })
     setSelectedMajor(computer)
   }
 

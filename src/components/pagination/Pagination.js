@@ -12,8 +12,8 @@ function Pagination({ postsPerPage, totalPosts, paginate }) {
       <nav>
         <PageUl className="pagination">
           {pageNumbers.map(number => (
-            <PageLi key={number} className="page-item">
-              <PageSpan onClick={() => paginate(number)} className="page-link">
+            <PageLi key={number} className="page-item" onClick={() => paginate(number)}>
+              <PageSpan className="page-link">
                 {number}
               </PageSpan>
             </PageLi>

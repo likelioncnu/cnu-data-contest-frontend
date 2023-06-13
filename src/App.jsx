@@ -52,10 +52,14 @@ function App() {
     const config = {
       method: 'GET',
     }
-    // ** url에 쿼리로 major을 입력하여 데이터를 가져온다. **
-    setPosts(
-      await getAsync('https://jsonplaceholder.typicode.com/posts', config)
+    const res = await getAsync(
+      `${API.MORE}?major=${major}&section=${section}`,
+      config
     )
+    const newPosts = res.filter(item => {
+      return item !== null
+    })
+    setPosts(newPosts)
     setMajor(major)
     setLoading(false)
     navigate('/board-list')
