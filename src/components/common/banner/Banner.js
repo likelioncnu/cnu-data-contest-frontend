@@ -16,7 +16,7 @@ const BannerContent = ({ type, section }) => {
       <strong>
         오직, 충남대 학생들을 위한
         <br />
-        교내 대외활동 아카이빙 플랫폼
+        대외활동 아카이빙 플랫폼
       </strong>
     </>
   )
