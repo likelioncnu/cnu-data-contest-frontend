@@ -53,7 +53,7 @@ function App() {
       method: 'GET',
     }
     const res = await getAsync(
-      `${process.env.REACT_APP_DB_HOST}${API.MORE}?major=${major}&section=${section}`,
+      `${API.MORE}?major=${major}&section=${section}`,
       config
     )
     console.log(res)
@@ -85,7 +85,7 @@ function App() {
       method: 'POST',
       data: favoriteMajor,
     }
-    const res = await getAsync(`${process.env.REACT_APP_DB_HOST}${API.MAJOR}`, config)
+    const res = await getAsync(`${API.MAJOR}`, config)
     if (res !== null) {
       window.location.href = '/'
     }
@@ -107,7 +107,7 @@ function App() {
       method: 'GET',
     }
     const res = await getAsync(
-      `${process.env.REACT_APP_DB_HOST}${API.MORE}?major=${major}&section=${section}`,
+      `${API.MORE}?major=${major}&section=${section}`,
       config
     )
     const newPosts = res.filter(item => {
