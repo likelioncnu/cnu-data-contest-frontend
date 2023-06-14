@@ -39,7 +39,7 @@ function UserLogin({ userInfoHandler }) {
     if (userId === '' || userPw === '') {
       setFailedLogin(true)
     } else {
-      const { isMember, major, name } = await getAsync(`${process.env.REACT_APP_DB_HOST}${API.LOGIN}`, config)
+      const { isMember, major, name } = await getAsync(`https://localhost${API.LOGIN}`, config)
       switch (isMember) {
         case 'none':
           setCookies('userId', input.userId)
