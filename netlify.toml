@@ -1,5 +1,0 @@
-[[redirects]]
-from = "/proxy/*"
-  to = "http://34.64.142.115:8080"
-  status = 200
-  force = true
