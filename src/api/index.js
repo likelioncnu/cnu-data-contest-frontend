@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const host = window.location.hostname === 'localhost' ? 'http://34.64.142.115:8080' : 'api'
+const host = window.location.hostname === 'localhost' ? 'http://34.64.142.115' : 'api';
 
 export const apiClient = axios.create({
   baseURL: host,
