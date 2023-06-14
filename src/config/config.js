@@ -1,11 +1,11 @@
 const API = {
-  LOGIN: `/api/localhost/login`,
-  MAJOR: `/api/localhost/major`,
-  FAVORITE_MAJOR: `/api/localhost/favoriteMajor`,
-  FAVORITE: `/api/localhost/favorite`,
-  BOARD: `/api/localhost/board`,
-  SEARCH: `/api/localhost/search`,
-  MORE: `/api/localhost/more`,
+  LOGIN: `/login`,
+  MAJOR: `/major`,
+  FAVORITE_MAJOR: `/favoriteMajor`,
+  FAVORITE: `/favorite`,
+  BOARD: `/board`,
+  SEARCH: `/search`,
+  MORE: `/more`,
 }
 
 export default API
